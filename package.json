@@ -30,13 +30,18 @@
   },
   "homepage": "https://github.com/mqttjs/async-mqtt#readme",
   "dependencies": {
-    "mqtt": "^4.1.0"
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "mqtt": "^4.1.0",
+    "rollup": "^2.34.2"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^11.0.0",
     "@types/node": "^14.0.5",
     "eslint": "^7.1.0",
     "mqtt-connection": "^4.0.0",
+    "rollup-plugin-copy-assets": "^2.0.3",
     "tape": "^5.0.0"
+  },
   "files": [
     "dist"
   ]
