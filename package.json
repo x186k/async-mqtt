@@ -37,5 +37,7 @@
     "eslint": "^7.1.0",
     "mqtt-connection": "^4.0.0",
     "tape": "^5.0.0"
-  }
+  "files": [
+    "dist"
+  ]
 }
