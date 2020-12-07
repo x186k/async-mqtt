@@ -1,6 +1,8 @@
 'use strict'
 
-const mqtt = require('mqtt');
+//const mqtt = require('mqtt');
+// https://github.com/mqttjs/MQTT.js/issues/1206#issuecomment-725591504
+const mqtt = require('mqtt/dist/mqtt.min.js')
 
 class AsyncClient {
   constructor (client) {
