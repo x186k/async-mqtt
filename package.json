@@ -7,7 +7,10 @@
   "description": "Promise wrapper over MQTT.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "pretest": "npm run build"
   },
   "repository": {
     "type": "git",
