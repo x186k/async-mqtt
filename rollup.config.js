@@ -11,7 +11,7 @@ export default [
 	{
 		input: 'index.js',
 		output: {
-			name: 'howLongUntilLunch',
+			name: 'xmqtt',
 			file: pkg.browser,
 			format: 'umd'
 		},
