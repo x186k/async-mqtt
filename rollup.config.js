@@ -16,7 +16,7 @@ export default [
 			format: 'umd'
 		},
 		plugins: [
-            copy({assets: ["index.html",],}),
+            copy({assets: ['./index.html',],}),
 			resolve(), // so Rollup can find `ms`
 			commonjs() // so Rollup can convert `ms` to an ES module
 		]
