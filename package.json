@@ -1,8 +1,8 @@
 {
-  "main": "dist/xmqtt.cjs.js",
-  "module": "dist/xmqtt.esm.js",
-  "browser": "dist/xmqtt.umd.js",
-  "name": "async-mqtt",
+  "main": "dist/async-mqtt-x186k.cjs.js",
+  "module": "dist/async-mqtt-x186k.esm.js",
+  "browser": "dist/async-mqtt-x186k.umd.js",
+  "name": "async-mqtt-x186k",
   "version": "2.6.1",
   "description": "Promise wrapper over MQTT.js",
   "types": "index.d.ts",
