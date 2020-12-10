@@ -4,19 +4,17 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
-import copy from "rollup-plugin-copy-assets";
 
 export default [
 	// browser-friendly UMD build
 	{
 		input: 'index.js',
 		output: {
-			name: 'xmqtt',
+			name: 'async-mqtt-x186k',
 			file: pkg.browser,
 			format: 'umd'
 		},
 		plugins: [
-            copy({assets: ['./index.html',],}),
 			resolve(), // so Rollup can find `ms`
 			commonjs() // so Rollup can convert `ms` to an ES module
 		]
