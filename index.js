@@ -1,12 +1,16 @@
 'use strict'
 
 //const mqtt = require('mqtt');
+// switch to pre-compiled mqtt, since rollup can't compile the uncompiled one
 // https://github.com/mqttjs/MQTT.js/issues/1206#issuecomment-725591504
 const mqtt = require('mqtt/dist/mqtt.min.js')
 
 class AsyncClient {
     constructor(client) {
         this._client = client;
+        this.mque = [];
+        this.promque = [];
+        this._client.addListener('message', (top, msg) => xhandler(this, top, msg));
     }
 
     set handleMessage(newHandler) {
@@ -132,8 +136,43 @@ class AsyncClient {
     setMaxListeners(...args) {
         return this._client.setMaxListeners(...args);
     }
-
 }
+
+
+function xhandler(emitter, topic, message) {
+    emitter.mque.push(message)
+    resolveProms(emitter)
+}
+function resolveProms(emitter) {
+    while (emitter.mque.length > 0 && emitter.promque.length > 0) {
+        let resolvefunc = emitter.promque.shift()
+        let msg = emitter.mque.shift()
+        resolvefunc(msg)
+    }
+}
+
+
+// Generate a Promise that listens only once for an event
+/** 
+ * @param {emitter} AsyncClient 
+ * @param {event} string
+*/
+var oncePromise = (emitter, event) => {
+    return new Promise(resolve => {
+        emitter.promque.push(resolve)
+        resolveProms(emitter) // if there are msgs in the queue, fire the promise now
+    });
+};
+
+
+// Add an async iterator to all WebSockets
+// @ts-ignore
+AsyncClient.prototype[Symbol.asyncIterator] = async function* () {
+    while (this.readyState !== 3) {
+        yield (await oncePromise(this, 'message'));
+    }
+    console.log('fuck')
+};
 
 
 module.exports = {
