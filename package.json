@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mqttjs/async-mqtt.git"
+    "url": "git+https://github.com/mqttjs/async-mqtt-x186k.git"
   },
   "keywords": [
     "mqtt",
@@ -26,9 +26,9 @@
   "author": "rangermauve",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mqttjs/async-mqtt/issues"
+    "url": "https://github.com/x186k/async-mqtt-x186k/issues"
   },
-  "homepage": "https://github.com/mqttjs/async-mqtt#readme",
+  "homepage": "https://github.com/x186k/async-mqtt-x186k#readme",
   "dependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "mqtt": "^4.1.0",
