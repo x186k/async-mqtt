@@ -147,7 +147,9 @@ function resolveProms(emitter) {
     while (emitter.mque.length > 0 && emitter.promque.length > 0) {
         let resolvefunc = emitter.promque.shift()
         let msg = emitter.mque.shift()
-        resolvefunc(msg)
+        // msg should be uint8array
+        var string = new TextDecoder("utf-8").decode(msg)
+        resolvefunc(string)
     }
 }
 
@@ -161,18 +163,17 @@ var oncePromise = (emitter, event) => {
     return new Promise(resolve => {
         emitter.promque.push(resolve)
         resolveProms(emitter) // if there are msgs in the queue, fire the promise now
-    });
-};
+    })
+}
 
 
 // Add an async iterator to all WebSockets
 // @ts-ignore
 AsyncClient.prototype[Symbol.asyncIterator] = async function* () {
-    while (this.readyState !== 3) {
+    while ( this.connected) {
         yield (await oncePromise(this, 'message'));
     }
-    console.log('fuck')
-};
+}
 
 
 module.exports = {
