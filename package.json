@@ -3,7 +3,7 @@
   "module": "dist/async-mqtt-x186k.esm.js",
   "browser": "dist/async-mqtt-x186k.umd.js",
   "name": "async-mqtt-x186k",
-  "version": "2.6.1",
+  "version": "3.0.1",
   "description": "Promise wrapper over MQTT.js",
   "types": "index.d.ts",
   "scripts": {
